@@ -18,7 +18,11 @@ Application： Spark应用程序。
 
 ### Spark运行架构图：
 
-![image-20200401122326512](/Users/andrew/Library/Application Support/typora-user-images/image-20200401122326512.png)
+![image-20200401122326512]([https://github.com/Andrew9980/spark-study/blob/master/image/spark%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE.png](https://github.com/Andrew9980/spark-study/blob/master/image/spark运行流程图.png))
+
+
+
+
 
 ### Spark执行流程
 
@@ -90,7 +94,7 @@ A->B宽依赖，分成两个Stage，CDEF窄依赖则分在一个Stage中
 
 
 ```
-spark.read.jdbc("jdbc:mysql://drdshbga020328s4public.drds.aliyuncs.com:3306/timing_user", "t_im_netease", TimingUtil.getJdbcSpan("imID", 1589977851, 1, 100000), RecommendUtil.odsTimingUserProp).createOrReplaceTempView("t_im_netease")
+spark.read.jdbc("jdbc:mysql://drdshbga020328s4public.drds.aliyuncs.com:3306/timing_user", "t_im_netease", TimingUtil.getJdbcSpan("imID", 1589978733, 1589977851, 50000), RecommendUtil.odsTimingUserProp).createOrReplaceTempView("t_im_netease")
 ```
 
 ``` 
@@ -117,7 +121,7 @@ spark-shell --master yarn --name user-event --deploy-mode client --driver-memory
 ```
 
 ``` 
-spark.read.jdbc("jdbc:mysql://rr-bp12u85w22spt5976do.mysql.rds.aliyuncs.com:3306/timing", "t_learning_group_im", "id", 67924469, 70000000, 200, RecommendUtil.odsProp).     write.mode(SaveMode.Overwrite).parquet(s"timing/t_learning_group_im")             spark.read.parquet(s"timing/${elem._2}").createOrReplaceTempView(elem._2)
+spark.read.jdbc("jdbc:mysql://rr-bp12u85w22spt5976do.mysql.rds.aliyuncs.com:3306/timing", "", "id", 1589978733, 70000000, 200, RecommendUtil.odsProp).     write.mode(SaveMode.Overwrite).parquet(s"timing/t_learning_group_im")             spark.read.parquet(s"timing/${elem._2}").createOrReplaceTempView(elem._2)
 ```
 
 ```
