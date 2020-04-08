@@ -18,7 +18,7 @@ Application： Spark应用程序。
 
 ### Spark运行架构图：
 
-![image-20200401122326512]([https://github.com/Andrew9980/spark-study/blob/master/image/spark%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE.png])
+![image-20200401122326512](https://github.com/Andrew9980/spark-study/blob/master/image/spark%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 
 
 
