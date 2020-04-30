@@ -123,8 +123,11 @@ Action算子中通过SparkContext执行提交作业的runJob操作，触发了RD
    7. take:返回最小的k个元素
    8. take:Ordered:返回最小的k个元素，并且返回的数组中保持元素顺序
    9. first:相当于top(1)返回整个rdd中的前k个元素，可以定义排序方式Ordering[T]。返回的是一个含前k个元素的数组。
-
-
+   10. reduce:对rdd中的元素进行reduceLeft函数操作,先对两个元素<K,V>进行reduce操作，然后将结果和迭代器取出的下一个元素<k,v>进行reduce操作，直到迭代器遍历完所有元素，直到结束。**串行**
+   11. fold:原理与reduce相同，但是与reduce不同，相当于每个reduce时，迭代器取的第一个元素是需要事先声明的zeroValue。**串行**
+   12. aggregate:先对每个分区的所有元素进行aggregate操作，再对分区的结果进行fold操作。**并行**
+   13. 广播(broadcas)变量：广泛用于广播Map Side Join中的小表，以及广播大变量等场景。这些数据集合在单节点内存能够容纳，不需要像rdd在节点之间打散存储。Spark运行时把广播变量发到各个节点，并保存下来，后续计算可以复用。相比Hadoop的distributed cache，广播的内容可以跨作业共享。
+   14. accumulator变量：允许做全局累加操纵，广泛使用在应用中记录当前的运行指标的情景。
 
 
 
